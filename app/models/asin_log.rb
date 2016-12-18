@@ -1,3 +1,5 @@
 class AsinLog < ActiveRecord::Base
-  # Remember to create a migration!
+  belongs_to :asin
+
+  validates :asin_id, :price presence: true
 end

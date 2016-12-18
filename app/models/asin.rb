@@ -1,3 +1,5 @@
 class Asin < ActiveRecord::Base
-  # Remember to create a migration!
+  has_many :logs, as: :AsinLog
+
+  validates :name, presence: true, uniqueness: true, length: {is: 10}
 end
