@@ -10,3 +10,7 @@ end
 def link_to_site(asin_log)
   'https://www.amazon.com/gp/offer-listing/' + asin_log.asin.name + '/ref=olp_f_primeEligible?ie=UTF8&f_new=true&f_primeEligible=true'
 end
+
+def link_to_show(asin_log)
+  "/asins/" + asin_log.asin.name
+end

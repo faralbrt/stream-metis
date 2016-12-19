@@ -7,4 +7,10 @@ class AsinLog < ActiveRecord::Base
     records = AsinLog.where("created_at >= ? AND created_at <= ?", Time.now.beginning_of_day, Time.now.tomorrow.beginning_of_day)
     records.sort_by{|record| record.title}
   end
+
+  def self.find_by_asin_name(name)
+    asin = Asin.find_by(name: name)
+    asin_logs = AsinLog.where(asin: asin)
+    asin_logs.sort_by{ |asin_log| asin_log.created_at }
+  end
 end
