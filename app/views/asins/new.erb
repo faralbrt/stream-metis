@@ -1,0 +1,16 @@
+<div class="container">
+  <h1>Track a New ASIN</h1>
+  <%= erb :_errors, layout: false %>
+  <br>
+  <form action="/asins" method="post">
+    <label for="name">ASIN</label>
+    <input type="text" name="name" placeholder="Paste ASIN here">
+    <input class="btn-inverse" type="submit" value="Submit">
+  </form>
+  <form action="/asins" method="post">
+    <label for="names">Multiple ASINs</label>
+    <textarea name="names" rows="8" cols="80" placeholder="Each ASIN must be separated by a comma..."></textarea>
+    <input class="btn-inverse" type="submit" value="Submit">
+  </form>
+
+</div>

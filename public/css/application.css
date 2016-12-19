@@ -1,7 +1,7 @@
 nav {
   display: block;
 }
-ul {
+.nav-bar {
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -12,17 +12,17 @@ ul {
   background-color: #f3f3f3;
   overflow: hidden;
 }
-li {
+.nav-items {
   float: left;
   margin: auto;
 }
-li a {
+.nav-items a {
   display: block;
   padding: 10px;
   color: black;
   text-decoration: none;
 }
-li a:hover {
+.nav-items a:hover {
   background-color: grey;
   text-decoration: none;
   color: black;
