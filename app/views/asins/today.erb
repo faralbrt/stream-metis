@@ -1,0 +1,24 @@
+<div class="container-fluid">
+  <h1>ASIN DATABASE</h1>
+  <table>
+    <thead>
+      <tr>
+        <th class= "col-md-2" style= "overflow: hidden; width: auto;">Date</th>
+        <th class= "col-md-2" style= "overflow: hidden; width: auto;">ASIN</th>
+        <th class= "col-md-4" style= "overflow: hidden; width: auto;">Title</th>
+        <th class= "col-md-2" style= "overflow: hidden; width: auto;">Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @asin_logs.each do |asin_log| %>
+      <tr>
+        <td><%= formatted_date(asin_log) %></td>
+        <td><%= asin_log.asin.name %></td>
+        <td><%= asin_log.title %></td>
+        <td><%= formatted_price(asin_log) %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+</div>
