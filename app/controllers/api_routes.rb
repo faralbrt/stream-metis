@@ -3,12 +3,13 @@ get '/asins' do
   @asins.inspect
 end
 
-post '/asinlogs/new' do
-  binding.pry
-  @asin_log = AsinLog.new(params)
+post '/asinlogs' do
+  asin = Asin.find_by(name: params[:asin])
+  price = params[:price].delete("$").to_f
+  @asin_log = AsinLog.new(title: params[:title], price: price, asin: asin)
   if @asin_log.save
-    "success"
+    puts "successful save"
   else
-    "fail"
+    puts "\n\n\n====================^^^^^^^^^^^^^^^^^^^==================== fail!!!!\n\n\n"
   end
 end
