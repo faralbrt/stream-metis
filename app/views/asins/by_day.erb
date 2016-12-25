@@ -1,3 +1,32 @@
 <div class="container">
+  <form id="search_title_form">
+    <input id="search_title" type="text" name="search_title" placeholder="Search by title..." onkeyup="myFunction()">
+  </form>
+  <form class="form-search">
+    <input class="input-medium" type="date" name="search_date" placeholder="Search by Date">
+    <button type="submit" class="btn btn-inverse">Search</button>
+  </form>
   <%= erb :'asins/_table' %>
 </div>
+<script>
+function myFunction() {
+  // Declare variables
+  var input, filter, table, tr, td, i;
+  input = document.getElementById("search_title");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("table");
+  tr = table.getElementsByTagName("tr");
+
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[2];
+    if (td) {
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+</script>
