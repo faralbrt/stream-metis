@@ -9,8 +9,7 @@ get '/asins/today' do
     date = DateTime.parse(params[:search_date])
     @asin_logs = AsinLog.where("created_at >= ? AND created_at < ?", date, date.tomorrow)
   else
-    # @asin_logs = AsinLog.todays_records
-    @asin_logs = AsinLog.all
+    @asin_logs = AsinLog.todays_records
   end
   erb :'asins/by_day'
 end
