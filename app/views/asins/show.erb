@@ -1,9 +1,33 @@
 <div class="container">
+  <div id="chartContainer"></div>
   <h1>History for: <%= @asin.name %></h1>
   <div class="stats">
     <p>Avg: <%= formatted_price(@asin.avg_price) %></p>
-    <p>Min: <%= formatted_price(@asin.logs.minimum(:price)) %></p>
-    <p>Max: <%= formatted_price(@asin.logs.maximum(:price)) %></p>
+    <p>Min: <%= formatted_price(@asin_logs.minimum(:price)) %></p>
+    <p>Max: <%= formatted_price(@asin_logs.maximum(:price)) %></p>
   </div>
   <%= erb :'asins/_table', layout: false %>
 </div>
+<script type="text/javascript" src="http://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="http://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
+<script type="text/javascript">
+$(function () {
+  //Better to construct options first and then pass it as a parameter
+  var options = {
+    title: {text: "History"},
+    animationEnabled: true,
+    data: [
+      {type: "spline", //change it to line, area, column, pie, etc
+      dataPoints: [
+      <% @asin_logs.each do |log|%>
+        <% if log.price > 0.0 %>
+          { x: <%= log.created_at.strftime("%y%m%d").to_i/10000.00 %>, y: <%= log.price %> },
+        <% end %>
+        <% end %>]
+      }
+    ]};
+
+  $("#chartContainer").CanvasJSChart(options);
+
+});
+</script>

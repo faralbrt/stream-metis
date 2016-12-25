@@ -103,3 +103,7 @@ td a:visited {
   font-size: 16px;
   color: red;
 }
+#chartContainer {
+  height: 400px;
+  width: 600px;
+}
