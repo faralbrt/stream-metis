@@ -26,9 +26,14 @@
     <div class="container">
       <nav>
         <ul class="nav nav-pills">
+          <% if logged_in? %>
           <li><a href="/">Home</a></li>
           <li><a href="/asins/new">Add ASIN</a></li>
           <li><a href="/asins/delete">Remove ASIN</a></li>
+            <li><a href="/logout">Log Out</a></li>
+          <% else %>
+            <li><a href="/login">Log In</a></li>
+          <% end %>
         </ul>
       </nav>
       <%= yield %>

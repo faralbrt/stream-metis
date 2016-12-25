@@ -1,0 +1,13 @@
+<br><br><hr>
+<h1>Sign In</h1>
+<br><br>
+<%= erb :'_errors' %>
+<form class="form-inline" action="/sessions" method="post">
+  <div class="form-group">
+    <label for="username">Username:</label>
+    <input type="text" name="username" placeholder="username" autofocus>
+    <label for="password">Password:</label>
+    <input type="password" name="password" placeholder="password">
+    <input class="btn-inverse form-control" type="submit" value="Login">
+  </div>
+</form>
