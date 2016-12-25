@@ -1,5 +1,6 @@
 get '/asins/today' do
-  @asin_logs = AsinLog.todays_records
+  # @asin_logs = AsinLog.todays_records
+  @asin_logs = AsinLog.all
   erb :'asins/_table', layout: true
 end
 
@@ -15,6 +16,17 @@ post '/asins' do
     @errors = @asin.errors.full_messages
     erb :'asins/new'
   end
+end
+
+post '/multiple_asins' do
+  asins = params[:names]
+  asins = asins.delete("\n\r ").split(",")
+  asins.each do |asin|
+    new_asin = Asin.new(name: asin)
+    @errors = [] unless @errors
+    @errors << "#{asin} could not save" unless new_asin.save
+  end
+  erb :'asins/new'
 end
 
 get '/asins/:asin' do
