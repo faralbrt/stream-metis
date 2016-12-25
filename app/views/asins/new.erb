@@ -1,16 +1,18 @@
-<div class="container">
-  <h1>Track a New ASIN</h1>
-  <%= erb :_errors, layout: false %>
-  <br>
-  <form action="/asins" method="post">
-    <label for="name">ASIN</label>
-    <input type="text" name="name" placeholder="Paste ASIN here" autofocus>
-    <input class="btn-inverse" type="submit" value="Submit">
-  </form>
-  <form action="/multiple_asins" method="post">
-    <label for="names">Multiple ASINs</label>
-    <textarea name="names" rows="8" cols="80" placeholder="Each ASIN must be separated by a comma..."></textarea>
-    <input class="btn-inverse" type="submit" value="Submit">
-  </form>
-
-</div>
+<h1>Track a New ASIN</h1>
+<%= erb :_errors, layout: false %>
+<br>
+<form class="form-inline" action="/asins" method="post">
+  <div class="form-group">
+    <label class="form-control" for="name">ASIN</label>
+    <input class="form-control" type="text" name="name" placeholder="Paste ASIN here" autofocus>
+    <input class="form-control btn-inverse" type="submit" value="Submit">
+  </div>
+</form>
+<br><br><br><br><hr>
+<form class="form-horizontal" action="/multiple_asins" method="post">
+  <div class="form-group">
+    <label class="form-control" for="names">Multiple ASINs</label>
+    <textarea class="form-control" name="names" rows="8" cols="80" placeholder="Each ASIN must be separated by a comma..."></textarea>
+    <input class="btn-inverse form-control" type="submit" value="Submit">
+  </div>
+</form>

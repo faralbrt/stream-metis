@@ -51,10 +51,13 @@ td a:visited {
   background-color: lightblue;
 }
 .container {
-  padding-top: 100px;
-  padding-right: 50px;
   padding-left: 50px;
+  padding-right: 50px;
   background-color: white;
+  min-height: 900px;
+}
+.container-fluid {
+  min-height: 900px;
 }
 .btn-inverse {
   color: #ffffff;
@@ -104,6 +107,16 @@ td a:visited {
   color: red;
 }
 #chartContainer {
-  height: 400px;
-  width: 600px;
+  height: 200px;
+  width: 100%;
+}
+#search-forms {
+  margin-top: 30px;
+  margin-bottom: 60px;
+}
+#date-form {
+  float: right;
+}
+#search-title-form {
+  float: left;
 }

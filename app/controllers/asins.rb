@@ -32,6 +32,7 @@ end
 
 post '/multiple_asins' do
   asins = params[:names]
+  redirect '/asins/new' if asins.empty?
   asins = asins.delete("\n\r ").split(",")
   asins.each do |asin|
     new_asin = Asin.new(name: asin)

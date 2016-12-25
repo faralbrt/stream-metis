@@ -1,13 +1,10 @@
-<div class="container">
-  <div id="chartContainer"></div>
-  <h1>History for: <%= @asin.name %></h1>
-  <div class="stats">
-    <p>Avg: <%= formatted_price(@asin.avg_price) %></p>
-    <p>Min: <%= formatted_price(@asin_logs.minimum(:price)) %></p>
-    <p>Max: <%= formatted_price(@asin_logs.maximum(:price)) %></p>
-  </div>
-  <%= erb :'asins/_table', layout: false %>
+<div id="chartContainer"></div>
+<div class="stats">
+  <p>Avg: <%= formatted_price(@asin.avg_price) %></p>
+  <p>Min: <%= formatted_price(@asin_logs.minimum(:price)) %></p>
+  <p>Max: <%= formatted_price(@asin_logs.maximum(:price)) %></p>
 </div>
+<%= erb :'asins/_table', layout: false %>
 <script type="text/javascript" src="http://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="http://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
 <script type="text/javascript">

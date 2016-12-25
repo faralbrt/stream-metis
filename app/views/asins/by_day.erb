@@ -1,13 +1,13 @@
-<div class="container">
-  <form id="search_title_form">
+<div id="search-forms">
+  <form id="search-title-form">
     <input id="search_title" type="text" name="search_title" placeholder="Search by title..." onkeyup="myFunction()">
   </form>
-  <form class="form-search">
-    <input class="input-medium" type="date" name="search_date" placeholder="Search by Date">
-    <button type="submit" class="btn btn-inverse">Search</button>
-  </form>
-  <%= erb :'asins/_table' %>
+  <form id="date-form" class="form-search">
+  <input class="input-medium" type="date" name="search_date" placeholder="Search by Date">
+  <button type="submit" class="btn btn-inverse">Search</button>
+</form>
 </div>
+<%= erb :'asins/_table' %>
 <script>
 function myFunction() {
   // Declare variables
