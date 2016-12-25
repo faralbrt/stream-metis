@@ -11,4 +11,12 @@ class Asin < ActiveRecord::Base
   def self.sort_by_title
     return Asin.all.sort_by{|asin| asin.title}
   end
+
+  def avg_price
+    return 0.0 unless !self.logs.empty?
+    prices = self.logs.map {|log| log.price if log.price > 0.0}
+    prices = prices.select {|price| price}
+    return prices.reduce(0.0) {|sum, price| sum + price}/prices.size unless prices.empty?
+    return 0.0
+  end
 end
