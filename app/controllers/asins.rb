@@ -1,5 +1,6 @@
-get '/asins' do
-  erb :'asins/index'
+get '/asins/delete' do
+  @asins = Asin.sort_by_title
+  erb :'asins/index_delete'
 end
 
 
@@ -39,4 +40,12 @@ end
 get '/asins/:asin' do
   @asin_logs = AsinLog.find_by_asin_name(params[:asin])
   erb :'asins/_table', layout: true
+end
+
+delete '/asins/delete/:id' do
+  asin = Asin.find_by(id: params[:id])
+  asin_logs = asin.logs
+  asin.destroy
+  asin_logs.each {|log| log.destroy} if asin_logs
+  redirect '/asins/delete'
 end

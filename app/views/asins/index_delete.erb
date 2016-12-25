@@ -1,0 +1,25 @@
+<div class="container">
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th class= "col-md-2" style= "overflow: hidden; width: auto;">ASIN</th>
+        <th class= "col-md-4" style= "overflow: hidden; width: auto;">Title</th>
+        <th class= "col-md-2" style= "overflow: hidden; width: auto;">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @asins.each do |asin| %>
+        <tr>
+          <td><%= asin.name %></td>
+          <td><%= asin.title %></td>
+          <td>
+            <form action="/asins/delete/<%= asin.id %>" method="post">
+              <input type="hidden" name="_method" value="delete">
+              <button type="submit" class="glyphicon glyphicon-trash"></button>
+            </form>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

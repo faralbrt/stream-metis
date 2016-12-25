@@ -97,3 +97,9 @@ td a:visited {
 .btn-inverse.active {
   color: rgba(255, 255, 255, 0.75);
 }
+.glyphicon-trash {
+  border: none;
+  background: none;
+  font-size: 16px;
+  color: red;
+}
