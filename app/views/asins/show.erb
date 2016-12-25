@@ -1,0 +1,9 @@
+<div class="container">
+  <h1>History for: <%= @asin.name %></h1>
+  <div class="stats">
+    <p>Avg: <%= formatted_price(@asin.avg_price) %></p>
+    <p>Min: <%= formatted_price(@asin.logs.minimum(:price)) %></p>
+    <p>Max: <%= formatted_price(@asin.logs.maximum(:price)) %></p>
+  </div>
+  <%= erb :'asins/_table', layout: false %>
+</div>

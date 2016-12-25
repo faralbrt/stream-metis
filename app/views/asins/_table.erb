@@ -1,4 +1,3 @@
-<div class="container">
   <h1>ASIN DATABASE</h1>
   <table class="table table-striped table-bordered">
     <thead>
@@ -15,10 +14,8 @@
         <td><%= formatted_date(asin_log) %></td>
         <td><a href="<%= link_to_show(asin_log)%>"><%= asin_log.asin.name %></a></td>
         <td><a href="<%= link_to_site(asin_log) %>"><%= asin_log.title %></a></td>
-        <td><%= formatted_price(asin_log) %></td>
+        <td><%= formatted_price(asin_log.price) %></td>
       </tr>
       <% end %>
     </tbody>
   </table>
-
-</div>

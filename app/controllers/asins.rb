@@ -7,7 +7,7 @@ end
 get '/asins/today' do
   # @asin_logs = AsinLog.todays_records
   @asin_logs = AsinLog.all
-  erb :'asins/_table', layout: true
+  erb :'asins/by_day'
 end
 
 get '/asins/new' do
@@ -38,8 +38,9 @@ post '/multiple_asins' do
 end
 
 get '/asins/:asin' do
-  @asin_logs = AsinLog.find_by_asin_name(params[:asin])
-  erb :'asins/_table', layout: true
+  @asin = Asin.find_by(name: params[:asin])
+  @asin_logs = @asin.logs
+  erb :'asins/show'
 end
 
 delete '/asins/delete/:id' do
