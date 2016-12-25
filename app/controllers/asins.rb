@@ -1,3 +1,8 @@
+get '/asins' do
+  erb :'asins/index'
+end
+
+
 get '/asins/today' do
   # @asin_logs = AsinLog.todays_records
   @asin_logs = AsinLog.all
@@ -11,7 +16,8 @@ end
 post '/asins' do
   @asin = Asin.new(name: params[:name])
   if @asin.save
-    redirect '/'
+    @success = "Asin was submitted successfully!"
+    erb :'asins/new'
   else
     @errors = @asin.errors.full_messages
     erb :'asins/new'
@@ -26,6 +32,7 @@ post '/multiple_asins' do
     @errors = [] unless @errors
     @errors << "#{asin} could not save" unless new_asin.save
   end
+  @success = "Asin(s) were submitted successfully!" if @errors.empty?
   erb :'asins/new'
 end
 

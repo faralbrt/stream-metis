@@ -6,8 +6,8 @@
     <% end %>
   </ul>
 </div>
-<% else %>
+<% elsif @success %>
   <div>
-    <p style="color:green;">Asins were successfully submitted!</p>
+    <p style="color:green;"><%= @success %></p>
   </div>
 <% end %>
