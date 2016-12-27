@@ -4,7 +4,7 @@ class AsinLog < ActiveRecord::Base
   validates :asin_id, :price, presence: true
 
   def self.todays_records
-    records = AsinLog.where("created_at >= ?", Time.current.beginning_of_day)
+    records = AsinLog.where("created_at >= ?", today)
     records.sort_by{|record| record.title}
   end
 
@@ -22,5 +22,9 @@ class AsinLog < ActiveRecord::Base
     return "green" if self.price/prev_log.price > 1.029
     return "red" if self.price/prev_log.price < 0.971
     return "none"
+  end
+
+  def today
+    (Time.now - 5*60*60).getutc.to_date.to_time
   end
 end
