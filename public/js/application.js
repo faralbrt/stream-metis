@@ -1,7 +1,6 @@
 $(document).ready(function() {
-  // This is called after the document has loaded in its entirety
-  // This guarantees that any elements we bind to will exist on the page
-  // when we try to bind to them
-
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
+  var green = $("td[style='background-color: green']").parent().detach();
+  var red = $("td[style='background-color: red']").parent().detach();
+  $("tbody").prepend(green);
+  $("tbody").prepend(red);  
 });
