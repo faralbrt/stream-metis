@@ -7,6 +7,9 @@
   <button type="submit" class="btn btn-inverse">Search</button>
 </form>
 </div>
+<div id="total-asin-count">
+  <p><strong><%= Asin.count %></strong> ASIN's are being tracked</p>
+</div>
 <%= erb :'asins/_table' %>
 <script>
 function myFunction() {
