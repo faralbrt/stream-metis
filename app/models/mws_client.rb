@@ -7,6 +7,7 @@ class MwsClient
     results = @client.list_matching_products(query_string).parse
     products = results["Products"]["Product"] if results["Products"]
     return unless products
+    return [parse_product(products)] if products.class != Array
     products.map {|product| parse_product(product)}
   end
 
