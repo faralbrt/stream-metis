@@ -5,6 +5,14 @@
 <div id="search_results">
   <h2 class>Search Results:</h2>
   <table class="table">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Title</th>
+        <th>Rank</th>
+        <th></th>
+      </tr>
+    </thead>
     <% if @search_results %>
       <tbody>
         <% @search_results.each do |result| %>
@@ -28,3 +36,21 @@
     <% end %>
   </table>
 </div>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("form[action='/asins']").on("submit", function(e) {
+      e.preventDefault();
+      $.ajax({
+        method: $(e.target).attr('method'),
+        url: $(e.target).attr('action'),
+        data: $(e.target).serialize()
+        }).done(function(r) {
+          var object = $(e.target)
+          object.parent().text("Tracking")
+        }).fail(function(r) {
+          console.log(r);
+        });
+    });
+  });
+
+</script>
