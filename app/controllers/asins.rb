@@ -21,6 +21,10 @@ get '/asins/new' do
   erb :'asins/new'
 end
 
+get '/asins/new_by_search' do
+  erb :'asins/new_by_search'
+end
+
 post '/asins' do
   redirect '/login' unless logged_in?
   @asin = Asin.new(name: params[:name])

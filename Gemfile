@@ -16,6 +16,7 @@ gem 'mechanize'
 gem 'shotgun', '~>0.9.1'
 gem 'faker'
 gem 'bcrypt'
+gem 'peddler'
 
 group :test do
   gem 'shoulda-matchers'
