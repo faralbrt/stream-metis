@@ -22,6 +22,10 @@ get '/asins/new' do
 end
 
 get '/asins/new_by_search' do
+  if params[:query]
+    client = MwsClient.new
+    @search_results = client.search(params[:query])
+  end
   erb :'asins/new_by_search'
 end
 
