@@ -1,0 +1,56 @@
+<form class="search-box" method="get">
+  <input type="text" name="query" placeholder="Search..." autofocus>
+  <input class="btn-inverse" type="submit" value="Search">
+</form>
+<div id="search_results">
+  <h2 class>Search Results:</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Title</th>
+        <th>Rank</th>
+        <th></th>
+      </tr>
+    </thead>
+    <% if @search_results %>
+      <tbody>
+        <% @search_results.each do |result| %>
+          <tr>
+            <td><img src="<%= result[:image] %>"></td>
+            <td style="vertical-align: middle;"><a href="https://www.amazon.com/dp/<%= result[:asin]%>"><%= result[:title] %></a></td>
+            <td><%= result[:rankings] %></td>
+            <td>
+              <% if already_tracking?(result[:asin]) %>
+                Already Tracking...
+              <% else %>
+                <form action="/asins" method="post">
+                  <input type="hidden" name="name" value="<%= result[:asin]%>">
+                  <input class="btn btn-primary" type="submit" value="Track">
+                </form>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    <% end %>
+  </table>
+</div>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("form[action='/asins']").on("submit", function(e) {
+      e.preventDefault();
+      $.ajax({
+        method: $(e.target).attr('method'),
+        url: $(e.target).attr('action'),
+        data: $(e.target).serialize()
+        }).done(function(r) {
+          var object = $(e.target)
+          object.parent().text("Tracking")
+        }).fail(function(r) {
+          console.log(r);
+        });
+    });
+  });
+
+</script>
